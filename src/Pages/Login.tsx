@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { userLogin } from '../Services/CallService'
 
 interface UserAuth {
@@ -13,10 +14,12 @@ const initUser: UserAuth = {
 
 export const Login: React.FC = () => {
     const [user, setUser] = useState(initUser)
+    const history = useHistory()
 
     const Authentication = () => {
         userLogin()
-        alert(JSON.stringify(user))
+        history.push('/info')
+
     }
 
     return (
